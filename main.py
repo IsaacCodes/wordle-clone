@@ -1,10 +1,11 @@
 #A Python Wordle Clone!
 import random
 
-import keyboard as _keyboard
+import custom_write as cw
+import keyboard as keyboard_py
 
 #Startup Message
-print("""
+cw.cprint("""
 Enter a 5 letter guess that will be color coded. You will have 6 attempts to get the right word.
 
 Gray   =  Letter not in word
@@ -27,22 +28,35 @@ def main(start_pos):
   alphabet = "abcdefghijklmnopqrstuvwxyz"
   
   #Game keyboard
-  keyboard = _keyboard.Keyboard()
+  keyboard = keyboard_py.Keyboard()
+  guess_log = ""
 
-  rounds = 1
-  while rounds <= 6:
-    pass
+  round = 1
+  while round <= 6:
+    #Sets cursor pos, clears screen below, reprints
+    cw.move_cursor_to(start_pos)
+    cw.clear_below()
+    cw.cprint(f"{keyboard}\n{guess_log}")
 
-  print(keyboard)
+    guess = cw.cinput("").lower()
+    guess_log += guess
+
+    round += 1
+
+  cw.cprint(keyboard)
 
 
 #Calls main according to user
 while True:
-  main("\033[6n") #ANSI code gets current console pos
-  answer = input("\nWould you like to play again (Y/N)? ")
+  main()
+
+  break
+  #start_pos = int("\033[6n".split("\x1b")[0].split(";")[0])
+  #main(start_pos)
+  answer = cw.cinput("\nWould you like to play again (Y/N)? ")
 
   if answer == "yes" or answer == "y":
-    print("Ok!\n\n")
+    cw.cprint("Ok!\n\n")
   else:
-    print("Ok, shutting down.")
+    cw.cprint("Ok, shutting down.")
     break

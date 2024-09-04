@@ -2,11 +2,11 @@
 
 #Stores ansi color codes for associated colors
 color_dict = {
-    "default" : "\033[0;0m",
-    "gray" : "\033[38;5;246m",
-    "green" : "\033[38;5;40m",
-    "yellow" : "\033[38;5;220m",
-    "red" : "\033[38;5;196m"
+    "default" : "\x1b[0;0m",
+    "gray" : "\x1b[38;5;246m",
+    "green" : "\x1b[38;5;40m",
+    "yellow" : "\x1b[38;5;220m",
+    "red" : "\x1b[38;5;196m"
     }
 
 #Class for indiviudal keyboard keys
